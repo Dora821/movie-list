@@ -4,7 +4,7 @@ var IndividualMovie = function(props) {
   return (
     <div className="single-movie-entry">
       <div className='movieTitle'>{props.eachMovie.title}</div>
-      <button onClick= {props.watchClicker} className="watch-status-btn" id="watched-btn">watched</button>
+      <button onClick= {props.watchedMovie} className="watch-status-btn" id="watched-btn">watched</button>
       <div className='MovieDescription'></div>
     </div>
   );
