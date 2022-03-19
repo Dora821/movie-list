@@ -3,18 +3,33 @@ import movieListData from '../data/movieListData.js';
 import MovieList from './MovieList.jsx';
 import SearchBar from './search.jsx';
 import AddMovie from './AddMovie.jsx';
+import axios from 'axios';
+// import getMovieInformation from './SearchMovie.js';
 
 // console.log(movieListData);
 class App extends React.Component {
  constructor(props) {
    super(props);
-   this.state = {allTheMovies: [], watchedList:[], movieToRender: []};
+   this.state = {allTheMovies: movieListData, watchedList:[], movieToRender: movieListData};
    this.userAddMovie = this.userAddMovie.bind(this);
    this.handleSearchClick = this.handleSearchClick.bind(this);
    this.watchedButtonClicked = this.watchedButtonClicked.bind(this);
    this.toWatchButtonClicked = this.toWatchButtonClicked.bind(this);
    this.addMovieToWatched = this.addMovieToWatched.bind(this);
+  //  this.getMovieInfo = this.getMovieInfo.bind(this);
+  //  getMovieInformation(this.getMovieInfo);
+  //  this.renderMovie();
  }
+
+//  getMovieInfoHandler(event) {
+//      let movieInfoTitle = event.target.value;
+//      getMovieInformation(movieInfoTitle, )
+
+//  }
+//get All movie data from API
+
+
+
 
 // Addmovie function to add userinput movie to the movielist
 userAddMovie() {
@@ -29,12 +44,15 @@ userAddMovie() {
   // console.log("Add movie");
   var updatedArr = [...this.state.allTheMovies, {'title': movieName}];
     // console.log([...updatedArr]);
-  this.setState({allTheMovies: updatedArr, movieToRender: updatedArr});
+  this.setState({allTheMovies: updatedArr, movieToRender: updatedArr, selectedInfo: false});
   movieName = '';
 };
 
 //  when search bar button is clicked, if there is a movie matching with the input (partially),
 // set current movie with that selected movie and pass down to movie list, otherwise pop a message
+fetchMovie() {
+
+}
 
 handleSearchClick() {
   console.log('SearchButton Clicked');
@@ -47,6 +65,8 @@ handleSearchClick() {
   //  if no current movie is selected, pop a window to indicate no movie in data base
   this.setState({movieToRender: searchedMovie});
 };
+
+
 
 
 // mark movies watchedList tobe true when clicking the wacthed button on each individual movie
@@ -87,7 +107,7 @@ toWatchButtonClicked() {
         <SearchBar buttonClick={this.handleSearchClick.bind(this)}/>
       </div>
       <div className="movie-list-bundle">
-        <MovieList allMovies={this.state.movieToRender} singleMovieWatch={this.addMovieToWatched} watchButton={this.watchedButtonClicked} toWacthButton={this.toWatchButtonClicked}/>
+        <MovieList allMovies={this.state.movieToRender} singleMovieWatch={this.addMovieToWatched} watchButton={this.watchedButtonClicked} toWacthButton={this.toWatchButtonClicked} titleClicker={this.titleClick}/>
       </div>
      </div> );
   };

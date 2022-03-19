@@ -1,0 +1,2 @@
+var API_KEY = 'f3c64acf0aa47148081267d537a1d026';
+export {API_KEY};

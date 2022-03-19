@@ -4,5 +4,8 @@ body {
 .single-movie-entry {
   border-color: black;
   border-width: 10px;
-  border-style: dashed;
+}
+.pop-up-title {
+  display: inline-block;
+  width: 200px;
 }
